@@ -2,7 +2,7 @@ require 'nokogiri'
 
 module Mercury
   class Scraper
-    # 3.スクレイピング Scraper
+
     def self.scrape_news(news)
       {
         title: news.xpath('./p/strong/a').first.text,
@@ -10,7 +10,6 @@ module Mercury
       }
     end
 
-    # 3.スクレイピング
     def self.scrape_section(section)
       {
         category: section.xpath('./h6').first.text,
@@ -19,9 +18,9 @@ module Mercury
     end
 
     def self.scrape(html)
-      # 3.スクレイピング
       doc = Nokogiri::HTML.parse(html, nil, 'utf-8')
       doc.xpath('/html/body/main/section[position() > 1]').map { |section| scrape_section(section) }
     end
+    
   end
 end

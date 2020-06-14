@@ -21,5 +21,6 @@ module Mercury
         read_website
       end
     end
+    
   end
 end
